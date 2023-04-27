@@ -49,5 +49,10 @@ namespace LeaveManagementWeb.Repositories
             context.Update(entity);
             await context.SaveChangesAsync();
         }
+
+        public Task<T> AddRangeAsync(List<T> entities)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

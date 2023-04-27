@@ -7,6 +7,7 @@ namespace LeaveManagementWeb.Contracts
         Task<T> GetAsync(int? id);
         Task<List<T>> GetAllAsync();
         Task<T> AddAsync(T entity);
+        Task<T> AddRangeAsync(List<T> entities);
         Task<bool> Exists(int id);
         Task DeleteAsync(int id);
         Task UpdateAsync(T entity);

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using LeaveManagementWeb.Constants;
 
 namespace LeaveManagementWeb.Areas.Identity.Pages.Account
 {
@@ -79,18 +80,22 @@ namespace LeaveManagementWeb.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
             [Required]
             [Display(Name = "First name")]
             public string FirstName { get; set; }
+
             [Required]
             [Display(Name = "Last name")]
             public string LastName { get; set; }
+
             [DataType(DataType.Date)]
             [Display(Name = "Date of birth")]
-            public DateTime DateOfBirth { get; set; }
+            public DateTime? DateOfBirth { get; set; }
+
             [DataType(DataType.Date)]
             [Display(Name = "Date joined")]
-            public DateTime DateJoined { get; set; }
+            public DateTime? DateJoined { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -131,14 +136,16 @@ namespace LeaveManagementWeb.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
-                user.DateOfBirth = Input.DateOfBirth;
-                user.DateJoined = Input.DateJoined;
+                user.DateOfBirth = Input.DateOfBirth ?? default;
+                user.DateJoined = Input.DateJoined ?? default;
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, Roles.User);
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

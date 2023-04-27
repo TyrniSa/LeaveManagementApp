@@ -5,6 +5,8 @@ using AutoMapper;
 using LeaveManagementWeb.Configurations;
 using LeaveManagementWeb.Contracts;
 using LeaveManagementWeb.Repositories;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using LeaveManagementWeb.Services;
 
 namespace LeaveManagementWeb
 {
@@ -21,7 +23,10 @@ namespace LeaveManagementWeb
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.AddTransient<IEmailSender>(s => new EmailSender("localhost", 25, "no-reply@leavemanagement.com"));
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();

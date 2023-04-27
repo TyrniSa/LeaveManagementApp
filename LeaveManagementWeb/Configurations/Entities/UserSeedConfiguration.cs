@@ -9,6 +9,8 @@ namespace LeaveManagementWeb.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
+            //creating default users, normally this would of course be in gitignore, but for this project
+            //decided to leave it in, since this is not going to production
             var hasher = new PasswordHasher<Employee>();
             builder.HasData(
                 new Employee

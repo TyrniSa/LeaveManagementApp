@@ -44,7 +44,7 @@
 </form>
 
 <form id="allocationForm" asp-action="AllocateLeave">
-    <input type="hidden" id="leaveTypeId" name="Id" />
+    <input type="hidden" id="leaveTypeAllocationId" name="Id" />
 </form>
 
 @section Scripts{
@@ -73,14 +73,13 @@
                 swal({
                     title: "Are you sure?",
                     text: "Are you sure you want to allocate to this leave to all employees?",
-                    icon: "warning",
-                    buttons: ["Cancel", "Delete"],
-                    dangerMode: true
+                    icon: "info",
+                    buttons: ["Cancel", "Yes"]
                 }).then((confirm) => {
                     if (confirm) {
                         var btn = $(this);
                         var id = btn.data("id");
-                        $('#leaveTypeId').val(id);
+                        $('#leaveTypeAllocationId').val(id);
                         $('#allocationForm').submit();
                     }
                 });

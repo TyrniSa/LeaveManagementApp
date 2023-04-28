@@ -11,6 +11,7 @@ using AutoMapper;
 using LeaveManagementWeb.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using LeaveManagementWeb.Constants;
+using LeaveManagementWeb.Repositories;
 
 namespace LeaveManagementWeb.Controllers
 {
@@ -68,6 +69,22 @@ namespace LeaveManagementWeb.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Cancel(int id)
+        {
+            try
+            {
+                await leaveRequestRepository.CancelLeaveRequest(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return RedirectToAction(nameof(MyLeaves));
+        }
+
         // GET: LeaveRequests/Create
         public IActionResult Create()
         {
@@ -89,13 +106,17 @@ namespace LeaveManagementWeb.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    await leaveRequestRepository.CreateLeaveRequest(model);
-                    return RedirectToAction(nameof(Index));
+                    var isValidRequest = await leaveRequestRepository.CreateLeaveRequest(model);
+                    if (isValidRequest)
+                    {
+                        return RedirectToAction(nameof(MyLeaves));
+                    }
+                    ModelState.AddModelError(string.Empty, "You have exceeded your allocation with this request.");
                 }
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "An error has occurred, please try again later.");
+                ModelState.AddModelError(string.Empty, "An Error Has Occurred. Please Try Again Later");
             }
 
             model.LeaveTypes = new SelectList(_context.LeaveTypes, "Id", "Name", model.LeaveTypeId);

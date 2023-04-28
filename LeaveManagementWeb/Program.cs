@@ -1,10 +1,10 @@
-using LeaveManagementWeb.Data;
+using LeaveManagementData;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using LeaveManagementWeb.Configurations;
-using LeaveManagementWeb.Contracts;
-using LeaveManagementWeb.Repositories;
+using LeaveManagementApplication.Contracts;
+using LeaveManagementApplication.Repositories;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using LeaveManagementWeb.Services;
 using Serilog;

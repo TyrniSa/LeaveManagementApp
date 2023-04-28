@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using LeaveManagementWeb.Data;
-using LeaveManagementWeb.Models;
-using AutoMapper;
-using LeaveManagementWeb.Contracts;
+using LeaveManagementData;
+using LeaveManagementCommon.Models;
+using LeaveManagementApplication.Contracts;
 using Microsoft.AspNetCore.Authorization;
-using LeaveManagementWeb.Constants;
-using LeaveManagementWeb.Repositories;
+using LeaveManagementCommon.Constants;
 
 namespace LeaveManagementWeb.Controllers
 {

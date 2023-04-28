@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using LeaveManagementWeb.Data;
-using LeaveManagementWeb.Models;
+using LeaveManagementData;
+using LeaveManagementCommon.Models;
 
 namespace LeaveManagementWeb.Configurations
 {

@@ -28,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.DefaultDays)
             </td>
             <td>
-                <button data-id="@item.Id" class="btn btn-primary allocateBtn" type="button">Allocate Leave</button> &nbsp;
+                <button data-id="@item.Id" class="btn btn-primary allocateBtn" type="button"><i class="fa-regular fa-calendar-check"></i> Allocate Leave for All Employees</button> &nbsp;
                 <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id"><i class="fa-regular fa-pen-to-square"></i> Edit</a> &nbsp;
                 <a asp-action="Details" class="btn btn-dark" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i> Details</a> &nbsp;
                 <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button"><i class="fa-regular fa-trash-can"></i></button>

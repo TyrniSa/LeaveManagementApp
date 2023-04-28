@@ -25,18 +25,15 @@
 
 <div class="alert alert-@className" role="alert">
     <h4 class="alert-heading">@headingText</h4>
-    <hr>
     <p>
         <strong>Employee Name:</strong>  @Model.Employee.FirstName @Model.Employee.LastName
     </p>
-    <hr />
     <p>
         <strong>Date Requested:</strong> @Html.DisplayFor(model => model.DateRequested)
     </p>
 </div>
 
 <div>
-    <hr />
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LeaveType)
@@ -73,14 +70,14 @@
                 <form asp-action="ApproveRequest" class="form-inline">
                     <input name="Id" value="@Model.Id" type="hidden" />
                     <input name="approved" type="hidden" value="true" />
-                    <button type="submit" class="btn btn-success btn-lg">Approve</button>
+                    <button type="submit" class="btn btn-success btn-lg"><i class="fa-solid fa-check"></i> Approve</button>
                 </form>
             </div>
             <div class="col">
                 <form asp-action="ApproveRequest" class="form-inline">
                     <input name="Id" value="@Model.Id" type="hidden" />
                     <input name="approved" type="hidden" value="false" />
-                    <button type="submit" class="btn btn-danger btn-lg">Reject</button>
+                    <button type="submit" class="btn btn-danger btn-lg"><i class="fa-solid fa-xmark"></i> Reject</button>
                 </form>
             </div>
         }

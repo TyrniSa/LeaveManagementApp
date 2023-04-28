@@ -38,6 +38,7 @@ namespace LeaveManagementWeb.Repositories
                 .Include(q=>q.LeaveType)
                 .Where(q=>q.EmployeeId == id)
                 .ToListAsync();
+
             var employee = await userManager.FindByIdAsync(id);
 
             var employeeAllocationModel = mapper.Map<EmployeeAllocationVM>(employee);

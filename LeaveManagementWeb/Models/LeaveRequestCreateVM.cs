@@ -10,13 +10,18 @@ namespace LeaveManagementWeb.Models
     {
         [Display(Name = "Start date")]
         [Required(ErrorMessage = "Enter a start date")]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}")]
+        [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
 
         [Display(Name = "End date")]
         [Required(ErrorMessage = "Enter an end date")]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}")]
+        [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 
         [Required]
+        [Display(Name = "Leave Type")]
         public int LeaveTypeId { get; set; }
         public SelectList? LeaveTypes { get; set; }
 

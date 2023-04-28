@@ -6,7 +6,7 @@
 
 <h1>Leave Types</h1>
 <br/>
-<table class="table table-striped" id="table" style="width:100%">
+<table class="table table-striped" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -28,8 +28,7 @@
                 @Html.DisplayFor(modelItem => item.DefaultDays)
             </td>
             <td>
-                <button data-id="@item.Id" class="btn btn-primary allocateBtn" type="button">Allocate leave</button>
-
+                <button data-id="@item.Id" class="btn btn-primary allocateBtn" type="button">Allocate Leave</button> &nbsp;
                 <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id"><i class="fa-regular fa-pen-to-square"></i> Edit</a> &nbsp;
                 <a asp-action="Details" class="btn btn-dark" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i> Details</a> &nbsp;
                 <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button"><i class="fa-regular fa-trash-can"></i></button>
@@ -50,9 +49,6 @@
 @section Scripts{
     <script>
         $(function(){
-
-            $('#table').DataTable();
-
             $('.deleteBtn').click(function(e) {
                 swal({
                     title: "Are you sure?",

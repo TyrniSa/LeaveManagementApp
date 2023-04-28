@@ -7,6 +7,7 @@ using LeaveManagementWeb.Contracts;
 using LeaveManagementWeb.Repositories;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using LeaveManagementWeb.Services;
+using Serilog;
 
 namespace LeaveManagementWeb
 {
@@ -37,9 +38,15 @@ namespace LeaveManagementWeb
 
             builder.Services.AddAutoMapper(typeof(MapperConfig));
 
+            builder.Host.UseSerilog((ctx, lc) =>
+                lc.WriteTo.Console()
+                .ReadFrom.Configuration(ctx.Configuration));
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            app.UseSerilogRequestLogging();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

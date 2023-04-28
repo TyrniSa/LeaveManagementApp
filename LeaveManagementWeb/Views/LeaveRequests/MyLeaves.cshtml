@@ -20,7 +20,7 @@
         {
             <li class="list-group-item">
                 <div class="row">
-                    <div class="col"><span class="badge rounded-pill bg-info text-dark">@allocation.LeaveType.Name</span></div>
+                    <div class="col"><span class="badge rounded-pill bg-info text-light">@allocation.LeaveType.Name</span></div>
                     <div class="col"><span class="badge rounded-pill bg-success">@allocation.LeaveType.DefaultDays</span></div>
                     <div class="col"><span class="badge rounded-pill bg-danger text-light">@allocation.NumberOfDays</span></div>
                 </div>
@@ -71,7 +71,7 @@
                 <td>
                     @if (item.Cancelled)
                     {
-                        <span class="badge bg-secondary">Cancelled</span>
+                        <span class="badge bg-dark">Cancelled</span>
                     }
                     else if (item.Approved == null)
                     {

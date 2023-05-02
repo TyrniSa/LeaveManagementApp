@@ -1,7 +1,7 @@
 # LeaveManagementNet6
 
-This is a project to practise ASP.NET Core and Entity Framework by building an Employee Leave Management System.
-Exercise provided by Trevoir Williams
+This is a project to practise ASP.NET Core and Entity Framework by building an Employee Leave Management System. This project can be set up and used on localhost.
+Exercise provided by [Trevoir Williams](https://www.udemy.com/user/trevoirwilliams/)
 Project made by [Tyrni Särkkä](https://tyrnisarkka.netlify.app/)
 
 
